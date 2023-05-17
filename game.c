@@ -93,6 +93,5 @@ void introPlay()
 	while ((ch = getchar()) != '\n'){}//엔터치면 다음 텍스트 나옴
 	printf("오늘은 왕자의 결혼식날. -enter");
 	while ((ch = getchar()) != '\n'){}
-	printf("테스트");
-	while ((ch = getchar()) != '\n'){}
+
 }
