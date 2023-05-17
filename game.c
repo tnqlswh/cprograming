@@ -89,9 +89,10 @@ void infoDraw()
 void introPlay()
 {
 	char ch;
-	printf("press enter to continue");
+	printf("\npress enter to continue");
 	while ((ch = getchar()) != '\n'){}//엔터치면 다음 텍스트 나옴
-	printf("오늘은 왕자의 결혼식날. -enter");
+	printf("오늘은 왕자의 결혼식날.");
 	while ((ch = getchar()) != '\n'){}
-
+	printf("왕자와 공주의 결혼식을 축하하기 위해 왕국의 백성들이 모두 모여 성대한 축제를 열었다...!");
+	while ((ch = getchar()) != '\n') {}
 }
