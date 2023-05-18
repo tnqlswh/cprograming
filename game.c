@@ -95,4 +95,6 @@ void introPlay()
 	while ((ch = getchar()) != '\n'){}
 	printf("왕자와 공주의 결혼식을 축하하기 위해 왕국의 백성들이 모두 모여 성대한 축제를 열었다...!");
 	while ((ch = getchar()) != '\n') {}
+	printf("");
+	while ((ch = getchar()) != '\n') {}
 }
