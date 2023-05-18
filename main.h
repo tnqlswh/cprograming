@@ -11,3 +11,7 @@
 #include <windows.h>
 
 #endif
+
+#include <conio.h>
+#include <stdlib.h>
+#define CLR system("cls")
