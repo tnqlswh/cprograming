@@ -12,13 +12,13 @@ int main()
 		scanf_s("%d", &c);
 		while (1)
 		{
-			if (c == 1)
+			if (c == 1)//게임시작
 			{
 				CLR;
 				introPlay();
 				return 0;
 			}
-			else if (c == 2)
+			else if (c == 2)//조작법
 			{
 				CLR;
 				infoDraw();
@@ -36,7 +36,7 @@ int main()
 					return 0;
 				}
 			}
-			else if (c == 3)
+			else if (c == 3)//게임종료
 			{
 				exit(0);
 			}
