@@ -2,7 +2,6 @@
 
 int main()
 {
-	int item[12] = { 0 };
 	int c;
 	init();
 	while (1)
@@ -17,7 +16,7 @@ int main()
 			{
 				CLR;
 				introPlay();
-				cellar();
+				bathroom();
 				return 0;
 			}
 			else if (c == 2)//Á¶ÀÛ¹ý
