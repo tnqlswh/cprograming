@@ -12,25 +12,9 @@
 
 #endif
 
+//화면 리셋 함수
 #include <conio.h>
 #include <stdlib.h>
 #define CLR system("cls")
 
-enum Color{
-    BLACK,
-    DARK_BLUE,
-    DARK_GREEN,
-    DARK_SKYBLUE,
-    DARK_RED,
-    DARK_VOILET,
-    DAKR_YELLOW,
-    GRAY,
-    DARK_GRAY,
-    BLUE,
-    GREEN,
-    SKYBLUE,
-    RED,
-    VIOLET,
-    YELLOW,
-    WHITE,
-};
+int item[12] = { 0 }; //아이템 습득 확인용 배열

@@ -3,7 +3,7 @@
 void titleOpen()
 {
 	printf("\n\n\n\n\n\n\n");
-	printf("                               10분 용사\n\n\n\n\n\n\n\n\n\n");
+	printf("                                 \033[1m10분 용사\033[0m\n\n\n\n\n\n\n\n\n\n");
 }
 
 int menu()

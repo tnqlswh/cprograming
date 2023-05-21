@@ -18,7 +18,7 @@
     <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="game.c">
+    <ClCompile Include="intro.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="util.c">
@@ -27,7 +27,7 @@
     <ClCompile Include="0cellar.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="livingroom%281%29.c">
+    <ClCompile Include="1livingroom.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="2garret.c">
