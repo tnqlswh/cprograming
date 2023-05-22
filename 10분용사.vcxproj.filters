@@ -24,19 +24,7 @@
     <ClCompile Include="util.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="0cellar.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="1livingroom.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="2garret.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="3storage.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="4bathroom.c">
+    <ClCompile Include="room.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

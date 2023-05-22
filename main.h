@@ -15,4 +15,4 @@
 //화면 리셋 함수
 #include <conio.h>
 #include <stdlib.h>
-#define CLR system("cls")
+#define CLR system("cls") 
