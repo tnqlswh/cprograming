@@ -3,7 +3,7 @@
 void titleOpen()
 {
 	printf("\n\n\n\n\n\n\n");
-	printf("                                 \033[1m10분 용사\033[0m\n\n\n\n\n\n\n\n");
+	printf("                                 \033[1m10분 용사\033[0m\n\n\n\n\n\n\n\n\n\n");
 }
 
 int menu()
@@ -15,12 +15,10 @@ int menu()
 
 void infoDraw()
 {
-	printf("게임 방식: 원하는 행동의 \033[31m번호\033[0m를 >>의 기호 옆에 입력해서 진행합니다!\n\n");
-	printf("스토리 진행: 아무 키나 입력 시 다음 대사가 나옵니다.\n\n");
-	printf("**권고사항** 대사를 천천히 넘기는 것을 권장드립니다^^.\n\n\n");
+	printf("원하는 행동의 번호를 입력해서 진행합니다! 스토리 진행은 아무 키나 누르면 진행됩니다~\n\n");
 	printf("1. 메인화면으로 돌아가기\n");
 	printf("2. 바로 게임 시작하기\n\n");
-	printf(">> ");
+	printf("원하는 행동의 번호를 입력하세요: ");
 }
 
 void introPlay()
@@ -81,6 +79,4 @@ void introPlay()
 	printf("하지만 앞으로 남은 시간은 단 10분!!!!\n\n");
 	_getch();
 	printf("과연 왕자는 왕관을 가지고 돌아올 수 있을 것인가!!!!!!");
-	_getch();
-	CLR;
 }

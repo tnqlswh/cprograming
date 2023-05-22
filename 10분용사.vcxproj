@@ -19,9 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="room.c" />
+    <ClCompile Include="4bathroom.c" />
     <ClCompile Include="intro.c" />
+    <ClCompile Include="2garret.c" />
+    <ClCompile Include="1livingroom.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="0cellar.c" />
+    <ClCompile Include="3storage.c" />
     <ClCompile Include="util.c" />
   </ItemGroup>
   <ItemGroup>
