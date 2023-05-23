@@ -7,6 +7,7 @@ int main()
 	while (1)
 	{
 		titleOpen();
+		menu();
 		printf("실행하길 원하는 번호를 입력해주세요: ");
 		scanf_s("%d", &c);
 		while (1)
