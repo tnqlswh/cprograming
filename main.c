@@ -7,8 +7,6 @@ int main()
 	while (1)
 	{
 		titleOpen();
-		menu();
-		printf("실행하길 원하는 번호를 입력해주세요: ");
 		scanf_s("%d", &c);
 		while (1)
 		{
@@ -17,7 +15,6 @@ int main()
 				CLR;
 				introPlay();//인트로
 				cellar();//지하실 입장
-				return 0;
 			}
 			else if (c == 2)//조작법
 			{
@@ -35,7 +32,6 @@ int main()
 					CLR;
 					introPlay();
 					cellar();
-					break;//return 0 써야될지 break 써야될지... 일단 다 만들어보고 나서 플레이 해보고 결정.
 				}
 			}
 			else if (c == 3)//게임종료
@@ -44,7 +40,6 @@ int main()
 			}
 			else//선택지 이외의 숫자를 입력했을 경우
 			{
-				CLR;
 				break;
 			}
 		}

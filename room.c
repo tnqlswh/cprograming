@@ -97,7 +97,7 @@ int cellar()//지하실
 				{
 					printf("침대 밑까지 깨끗하다고? 여러 의미로 '무시무시한 용'이다...\n");
 					_getch();
-					printf("웬일로 열쇠가 하나 있네. '다락방'이라고 적혀 있어.\n여기에 넣어놓았단 말은 중요한 물건이라는 뜻이겠지? 바로 챙겨가야겠다!");
+					printf("웬일로 열쇠가 하나 있네. '다락방'이라고 적혀 있어.\n여기에 넣어놓았단 말은 중요한 물건이라는 뜻이겠지? 바로 챙겨가야겠다!\n\n");
 					_getch();
 					printf("다락방 열쇠를 획득했다!");
 					_getch();
@@ -808,7 +808,7 @@ int gameover_bedroom()
 	printf("잠자는 용을 건들지 말자.");
 	_getch();
 	CLR;
-	titleOpen();
+	main();
 }
 
 int ending()
@@ -818,5 +818,5 @@ int ending()
 	printf("무사히 왕관 구출에 성공했다!");
 	_getch();
 	CLR;
-	titleOpen();
+	main();
 }
