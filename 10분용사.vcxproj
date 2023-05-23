@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AA.c" />
     <ClCompile Include="room.c" />
     <ClCompile Include="intro.c" />
     <ClCompile Include="main.c" />

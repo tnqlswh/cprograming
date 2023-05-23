@@ -27,6 +27,9 @@
     <ClCompile Include="room.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="AA.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
