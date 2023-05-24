@@ -1,4 +1,15 @@
 #include "room.h"
+
+int count;
+
+void countCheck()
+{
+	if (count >= 6)
+	{
+		gameover_time();
+	}
+}
+
 int cellar()//지하실
 {
 	static int justOnecell = 0;//첫 입장 대사 1번 출력
@@ -28,6 +39,8 @@ int cellar()//지하실
 		{
 			if (cellChoose == 1)//삼단 윗칸
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[0] == 1)//지하실 열쇠 보유 시
 				{
@@ -51,7 +64,8 @@ int cellar()//지하실
 			}
 			else if (cellChoose == 2)//삼단중간칸
 			{
-				//화면전환222
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[1] == 1) //유리컵 보유 시
 				{
@@ -75,6 +89,8 @@ int cellar()//지하실
 			}
 			else if (cellChoose == 3)//삼단하단칸
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				printf("종이 서류가 잔뜩 있다!\n맨 위에 놓인 A4 용지에는 크게 6 4라고 적혀있다...?\n");
 				_getch();
@@ -85,6 +101,8 @@ int cellar()//지하실
 			}
 			else if (cellChoose == 4)//접이식 침대 밑
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[2] == 1)//다락 방 열쇠 보유 시
 				{
@@ -108,6 +126,8 @@ int cellar()//지하실
 			}
 			else if (cellChoose == 5)//지하실 출구
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[0] == 1)//지하실 열쇠 보유 시
 				{
@@ -128,6 +148,7 @@ int cellar()//지하실
 			}
 			else//선택지 이외의 것을 입력했을 경우
 			{
+				countCheck();
 				CLR;
 				break;
 			}
@@ -165,6 +186,8 @@ int livingroom()//거실
 		{
 			if (livChoose == 1)//지하실 문
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				printf("뭔가 두고 간건 없을까? 잠깐 들어갔다 와보자.");
 				_getch();
@@ -173,6 +196,8 @@ int livingroom()//거실
 			}
 			else if (livChoose == 2)//다락방 문
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[2] == 1) //다락방 열쇠 보유 시
 				{
@@ -199,6 +224,8 @@ int livingroom()//거실
 			}
 			else if (livChoose == 3)//창고 문
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[3] == 1) //창고 문 열쇠 보유 시
 				{
@@ -228,6 +255,8 @@ int livingroom()//거실
 			}
 			else if (livChoose == 4)//화장실 문
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[4] == 1)//화장실 문 열쇠 보유 시
 				{
@@ -254,6 +283,8 @@ int livingroom()//거실
 			}
 			else if (livChoose == 5)//침실 문
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				int bedChoose;
 				printf("화려한 문 한가운데 '침실'이라는 팻말이 걸려있다.\n");
@@ -303,6 +334,8 @@ int livingroom()//거실
 			}
 			else if (livChoose == 6)//부엌 서랍장
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[5] == 1)
 				{
@@ -315,8 +348,8 @@ int livingroom()//거실
 				{
 					printf("서랍장에 여러 물건들이 가지런히 정리되어 있다. 필요한 물건은 없을까?\n\n");
 					_getch();
-					printf("뒤적대다 보니 '낙하산'이라 적힌 열쇠가 구석에 숨겨져 있었다.\n\n");
-					printf("... 잠깐, 낙하산?\n\n");
+					printf("뒤적대다 보니 '낙하산'이라 적힌 열쇠가 구석에 숨겨져 있었다.\n");
+					printf("... 잠깐, 낙하산?\n");
 					_getch();
 					printf("열쇠가 들어맞는 곳만 찾으면, 낙하산을 타고 안전하게 빠져나갈 수 있겠다!\n\n");
 					_getch();
@@ -329,6 +362,8 @@ int livingroom()//거실
 			}
 			else if (livChoose == 7)//부엌 찬장
 			{
+				count += 1;
+				countCheck();
 				if (item[6] == 1)
 				{
 					CLR;
@@ -353,6 +388,8 @@ int livingroom()//거실
 			}
 			else if (livChoose == 8)//메모판
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				printf("부엌 메모판에 하루 일과, 이번 달 스케줄, 그리고 해야 할 일에 대한 메모가 잔뜩 정리되어 있다.\n");
 				_getch();
@@ -372,6 +409,8 @@ int livingroom()//거실
 			}
 			else if (livChoose == 9)//옥상 문
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[9] != 1)//보물 소지X
 				{
@@ -404,9 +443,10 @@ int livingroom()//거실
 			}
 			else//선택지 이외의 숫자를 입력했을 경우
 			{
+				countCheck();
 				CLR;
 				break;
-				}
+			}
 		}
 	}
 }
@@ -428,6 +468,8 @@ int garret()//다락방
 		{
 			if (garChoose == 1)//보통크기의 상자
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				printf("여기도 서류가 잔뜩 담겨 있다.\n");
 				_getch();
@@ -438,6 +480,8 @@ int garret()//다락방
 			}
 			else if (garChoose == 2)//작은 상자
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[4] == 1)//화장실 열쇠 보유 시
 				{
@@ -473,6 +517,8 @@ int garret()//다락방
 			}
 			else if (garChoose == 3)//큰 상자
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[11] == 1)//낙하산 보유 시
 				{
@@ -518,6 +564,8 @@ int garret()//다락방
 			}
 			else if (garChoose == 4)//보석함
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[3] == 1)//창고 열쇠 보유시
 				{
@@ -544,6 +592,8 @@ int garret()//다락방
 			}
 			else if (garChoose == 5)//거실로 돌아가기
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				printf("거실로 돌아가야겠다.");
 				_getch();
@@ -551,6 +601,7 @@ int garret()//다락방
 			}
 			else//선택지 이외의 숫자를 입력했을 경우
 			{
+				countCheck();
 				CLR;
 				break;
 			}
@@ -592,6 +643,8 @@ int storage()//창고
 		{
 			if (storChoose == 1)//공구함
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[7] == 1)//스패너 보유 시
 				{
@@ -615,6 +668,8 @@ int storage()//창고
 			}
 			else if (storChoose == 2)//금고
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[9] == 1) //보물 획득 시
 				{
@@ -654,6 +709,8 @@ int storage()//창고
 			}
 			else if (storChoose == 3)//거실로 돌아가기
 			{
+				count += 1;
+				countCheck();
 				if (item[7] == 1)//스패너 보유 시
 				{
 					CLR;
@@ -677,6 +734,7 @@ int storage()//창고
 			}
 			else//선택지 이외의 숫자를 입력했을 경우
 			{
+				countCheck();
 				CLR;
 				break;
 			}
@@ -710,6 +768,8 @@ int bathroom()//화장실
 		{
 			if (bathChoose == 1)//화장실 수납장
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[10] == 1)//옥상 열쇠 보유 시
 				{
@@ -739,6 +799,8 @@ int bathroom()//화장실
 			}
 			else if (bathChoose == 2)//녹 제거제 만들기
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[1] == 1 && item[6] != 1)//유리컵 有, 계량 스푼 無
 				{
@@ -783,6 +845,8 @@ int bathroom()//화장실
 			}
 			else if (bathChoose == 3)//거실로 나가기
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				printf("거실로 돌아가야겠다.");
 				_getch();
@@ -791,6 +855,7 @@ int bathroom()//화장실
 			}
 			else//선택지 이외의 숫자를 입력했을 경우
 			{
+				countCheck();
 				CLR;
 				break;
 			}

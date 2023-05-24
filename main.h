@@ -16,9 +16,13 @@
 #include <stdlib.h>
 #define CLR system("cls")//화면 리셋 함수
 
-#ifndef __TIME_H__
+/*#ifndef __TIME_H__
 #define __TIME_H__
 
 #include <time.h>
+extern time_t start;
+extern time_t check;
 
-#endif
+void timeEnd();
+
+#endif*/
