@@ -4,7 +4,7 @@ int count;
 
 void countCheck()
 {
-	if (count >= 6)
+	if (count >= 60)//60번 이상 행동할 시 게임오버
 	{
 		gameover_time();
 	}
