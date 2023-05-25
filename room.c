@@ -865,6 +865,7 @@ int bathroom()//화장실
 
 int gameover_bedroom()
 {
+	count = 0;
 	CLR;
 	_getch();
 	printf("왕자: 꺄악!!!!!!\n\n\n");
@@ -884,6 +885,7 @@ int gameover_bedroom()
 
 int ending()
 {
+	count = 0;
 	CLR;
 	_getch();
 	printf("보물 탈환 작전 10분 스피드런을 성공한 왕자는, 낙하산을 타고 용의 저택에서 탈출해 왕국으로 돌아왔다.\n\n");
@@ -907,6 +909,7 @@ int ending()
 
 int gameover_time()
 {
+	count = 0;
 	//타이머가 10분이 되었을 때
 	CLR;
 	printf("따르르르릉!\n\n");
