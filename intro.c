@@ -1,6 +1,6 @@
 #include "game.h"
 
-void titleOpen()
+void titleOpen()//메인 타이틀
 {
 	printf("\n\n\n\n\n\n\n");
 	printf("        ##      ####      ##    ##  ######  ###  ###        ###  ###  ####### ######     ####\n");
@@ -16,7 +16,7 @@ void titleOpen()
 	printf("        실행하길 원하는 \033[33m번호\033[0m를 입력해주세요: ");
 }
 
-void infoDraw()
+void infoDraw()//게임 정보
 {
 	printf("게임 방식: 원하는 행동의 \033[31m번호\033[0m를 >>의 기호 옆에 입력해서 진행합니다!\n게임이 시작되면 행동마다 횟수를 카운트하게 됩니다.\n스릴을 위해 전체 횟수 공개는 안하고 있으니 정해진 횟수 내에서 빠르게 탈출하세요!\n\n");
 	printf("스토리 진행: \033[31m아무 키나 입력\033[0m 시 다음 대사가 나옵니다.\n\n");
@@ -26,9 +26,8 @@ void infoDraw()
 	printf(">> ");
 }
 
-void introPlay()
+void introPlay()//인트로
 {
-	//각 등장인물 색 다르게 하는 거 고려해보기. & 나레이션도!
 	_getch();
 	printf("오늘은 왕자의 결혼식날.\n\n");
 	_getch();

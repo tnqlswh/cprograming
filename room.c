@@ -1,6 +1,6 @@
 #include "room.h"
 
-int count;
+int count;//행동 횟수 변수
 
 void countCheck()
 {
@@ -12,7 +12,7 @@ void countCheck()
 
 int cellar()//지하실
 {
-	static int justOnecell = 0;//첫 입장 대사 1번 출력
+	static int justOnecell = 0;//첫 입장 대사 한 번만 출력
 	if(justOnecell == 0)
 	{
 		_getch();
@@ -37,7 +37,7 @@ int cellar()//지하실
 		scanf_s("%d", &cellChoose);
 		while (1)
 		{
-			if (cellChoose == 1)//삼단 윗칸
+			if (cellChoose == 1)//삼단서랍장 윗칸
 			{
 				count += 1;
 				countCheck();
@@ -62,7 +62,7 @@ int cellar()//지하실
 					break;
 				}
 			}
-			else if (cellChoose == 2)//삼단중간칸
+			else if (cellChoose == 2)//삼단서랍장 중간칸
 			{
 				count += 1;
 				countCheck();
@@ -87,7 +87,7 @@ int cellar()//지하실
 					break;
 				}
 			}
-			else if (cellChoose == 3)//삼단하단칸
+			else if (cellChoose == 3)//삼단서랍장 하단칸
 			{
 				count += 1;
 				countCheck();
@@ -192,7 +192,7 @@ int livingroom()//거실
 				printf("뭔가 두고 간건 없을까? 잠깐 들어갔다 와보자.");
 				_getch();
 				CLR;
-				cellar();
+				cellar();//지하실 함수 실행
 			}
 			else if (livChoose == 2)//다락방 문
 			{
@@ -209,7 +209,7 @@ int livingroom()//거실
 					printf("딸깍하면서 문이 열렸다!");
 					_getch();
 					CLR;
-					garret();
+					garret();//다락방 함수 실행
 					break;
 				}
 				else
@@ -238,7 +238,7 @@ int livingroom()//거실
 					printf("들어가지 말라는 곳에 들어가는 건 언제나 재미있는 법이지.");
 					_getch();
 					CLR;
-					storage();
+					storage();//창고 함수 실행
 					break;
 				}
 				else
@@ -268,7 +268,7 @@ int livingroom()//거실
 					printf("딸깍하면서 문이 열렸다!\n");
 					_getch();
 					CLR;
-					bathroom();
+					bathroom();//화장실 함수 실행
 					break;
 				}
 				else
@@ -310,7 +310,7 @@ int livingroom()//거실
 						printf("이미 문까지 열었는데, 역시 인생은 직진이지!");
 						_getch();
 						CLR;
-						gameover_bedroom();
+						gameover_bedroom();//배드엔딩(침실) 함수 실행
 					}
 					else if (bedChoose2 == 2)
 					{
@@ -337,7 +337,7 @@ int livingroom()//거실
 				count += 1;
 				countCheck();
 				CLR;
-				if (item[5] == 1)
+				if (item[5] == 1)//상자 열쇠 보유 시
 				{
 					printf("서랍장에 여러 물건들이 뒤섞여 있다.");
 					_getch();
@@ -364,7 +364,7 @@ int livingroom()//거실
 			{
 				count += 1;
 				countCheck();
-				if (item[6] == 1)
+				if (item[6] == 1)//계량 스푼 보유 시
 				{
 					CLR;
 					printf("부엌 서랍장에 조리기구들이 엉망진창으로 놓여 있다.");
@@ -438,7 +438,7 @@ int livingroom()//거실
 				else if (item[9] == 1 && item[10] == 1 && item[11] == 1)//엔딩 조건 만족
 				{
 					CLR;
-					ending();
+					ending();//엔딩 함수 실행
 				}
 			}
 			else//선택지 이외의 숫자를 입력했을 경우
@@ -466,7 +466,7 @@ int garret()//다락방
 		scanf_s("%d", &garChoose);
 		while (1)
 		{
-			if (garChoose == 1)//보통크기의 상자
+			if (garChoose == 1)//보통 크기의 상자
 			{
 				count += 1;
 				countCheck();
@@ -597,7 +597,7 @@ int garret()//다락방
 				CLR;
 				printf("거실로 돌아가야겠다.");
 				_getch();
-				livingroom();
+				livingroom();//거실 함수 실행
 			}
 			else//선택지 이외의 숫자를 입력했을 경우
 			{
@@ -684,7 +684,7 @@ int storage()//창고
 					printf("비밀번호 6자리를 입력해야 하는 것 같은데...번호를 어떻게 찾지?\n\n");
 					printf("비밀번호 입력: ");
 					scanf_s("%d", &pw);
-					if (pw == 643128)
+					if (pw == 643128)//비밀번호를 맞췄을 시
 					{
 						CLR;
 						printf("헉, 정말로 이게 비밀번호였다니! 용 녀석도 은근 허술하네.\n");
@@ -863,7 +863,7 @@ int bathroom()//화장실
 	}
 }
 
-int gameover_bedroom()
+int gameover_bedroom()//배드 엔딩(침실)
 {
 	count = 0;
 	CLR;
@@ -880,10 +880,10 @@ int gameover_bedroom()
 	printf("TIP! 잠자는 용은 건들지 말자...");
 	_getch();
 	CLR;
-	main();
+	main();//메인 화면으로 돌아가기
 }
 
-int ending()
+int ending()//엔딩
 {
 	count = 0;
 	CLR;
@@ -904,13 +904,12 @@ int ending()
 	printf("THE END");
 	_getch();
 	CLR;
-	main();
+	main();//메인 화면으로 돌아가기
 }
 
-int gameover_time()
+int gameover_time()//지정 횟수 60번을 넘기게 되었을 때의 시간 초과 엔딩
 {
 	count = 0;
-	//타이머가 10분이 되었을 때
 	CLR;
 	printf("따르르르릉!\n\n");
 	_getch();
@@ -929,5 +928,5 @@ int gameover_time()
 	printf("TIP! 더 빨리 보물을 찾고 탈출해보자.");
 	_getch();
 	CLR;
-	main();
+	main();//메인 화면으로 돌아가기
 }
