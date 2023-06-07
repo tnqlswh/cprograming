@@ -1,7 +1,18 @@
 #include "room.h"
+
+int count;//행동 횟수 변수
+
+void countCheck()
+{
+	if (count >= 60)//60번 이상 행동할 시 게임오버
+	{
+		gameover_time();
+	}
+}
+
 int cellar()//지하실
 {
-	static int justOnecell = 0;//첫 입장 대사 1번 출력
+	static int justOnecell = 0;//첫 입장 대사 한 번만 출력
 	if(justOnecell == 0)
 	{
 		_getch();
@@ -18,7 +29,7 @@ int cellar()//지하실
 	while (1)
 	{
 		int cellChoose;
-		//창고 아스키아트..? 있을 시 넣을 것
+		cellarArt();
 		printf("우리 왕국의 지하 창고와는 비교도 안 될 정도로 깨끗한 지하실이다.\n");
 		printf("지하실까지 이렇게 깨끗할 정도면, 얼마나 갓생을 사는 거야...?\n\n");
 		printf("1) 삼단서랍장 윗칸  2) 삼단서랍장 중간칸  3) 삼단서랍장 아랫칸  4) 접이식 침대 밑  5) 지하실 출구\n");
@@ -26,8 +37,10 @@ int cellar()//지하실
 		scanf_s("%d", &cellChoose);
 		while (1)
 		{
-			if (cellChoose == 1)//삼단 윗칸
+			if (cellChoose == 1)//삼단서랍장 윗칸
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[0] == 1)//지하실 열쇠 보유 시
 				{
@@ -49,9 +62,10 @@ int cellar()//지하실
 					break;
 				}
 			}
-			else if (cellChoose == 2)//삼단중간칸
+			else if (cellChoose == 2)//삼단서랍장 중간칸
 			{
-				//화면전환222
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[1] == 1) //유리컵 보유 시
 				{
@@ -73,8 +87,10 @@ int cellar()//지하실
 					break;
 				}
 			}
-			else if (cellChoose == 3)//삼단하단칸
+			else if (cellChoose == 3)//삼단서랍장 하단칸
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				printf("종이 서류가 잔뜩 있다!\n맨 위에 놓인 A4 용지에는 크게 6 4라고 적혀있다...?\n");
 				_getch();
@@ -85,6 +101,8 @@ int cellar()//지하실
 			}
 			else if (cellChoose == 4)//접이식 침대 밑
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[2] == 1)//다락 방 열쇠 보유 시
 				{
@@ -97,7 +115,7 @@ int cellar()//지하실
 				{
 					printf("침대 밑까지 깨끗하다고? 여러 의미로 '무시무시한 용'이다...\n");
 					_getch();
-					printf("웬일로 열쇠가 하나 있네. '다락방'이라고 적혀 있어.\n여기에 넣어놓았단 말은 중요한 물건이라는 뜻이겠지? 바로 챙겨가야겠다!");
+					printf("웬일로 열쇠가 하나 있네. '다락방'이라고 적혀 있어.\n여기에 넣어놓았단 말은 중요한 물건이라는 뜻이겠지? 바로 챙겨가야겠다!\n\n");
 					_getch();
 					printf("다락방 열쇠를 획득했다!");
 					_getch();
@@ -108,6 +126,8 @@ int cellar()//지하실
 			}
 			else if (cellChoose == 5)//지하실 출구
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[0] == 1)//지하실 열쇠 보유 시
 				{
@@ -128,6 +148,7 @@ int cellar()//지하실
 			}
 			else//선택지 이외의 것을 입력했을 경우
 			{
+				countCheck();
 				CLR;
 				break;
 			}
@@ -154,7 +175,7 @@ int livingroom()//거실
 	while (1)
 	{
 		int livChoose;
-		//거실 아스키아트..? 있을 시 넣을 것
+		livingroomArt();
 		printf("깨끗한 바닥, 깔끔한 가구들. 삐뚤어진 것 하나 없이 깔끔한 거실이다.\n");
 		printf("거실에 연결되어 있는 부엌도 그야말로 깔끔 그 자체다.\n");
 		printf("검은 용을 왕실 청소부로 고용할까 진지하게 고민할 뻔했어...\n\n");
@@ -165,14 +186,18 @@ int livingroom()//거실
 		{
 			if (livChoose == 1)//지하실 문
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				printf("뭔가 두고 간건 없을까? 잠깐 들어갔다 와보자.");
 				_getch();
 				CLR;
-				cellar();
+				cellar();//지하실 함수 실행
 			}
 			else if (livChoose == 2)//다락방 문
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[2] == 1) //다락방 열쇠 보유 시
 				{
@@ -184,7 +209,7 @@ int livingroom()//거실
 					printf("딸깍하면서 문이 열렸다!");
 					_getch();
 					CLR;
-					garret();
+					garret();//다락방 함수 실행
 					break;
 				}
 				else
@@ -199,6 +224,8 @@ int livingroom()//거실
 			}
 			else if (livChoose == 3)//창고 문
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[3] == 1) //창고 문 열쇠 보유 시
 				{
@@ -211,7 +238,7 @@ int livingroom()//거실
 					printf("들어가지 말라는 곳에 들어가는 건 언제나 재미있는 법이지.");
 					_getch();
 					CLR;
-					storage();
+					storage();//창고 함수 실행
 					break;
 				}
 				else
@@ -228,6 +255,8 @@ int livingroom()//거실
 			}
 			else if (livChoose == 4)//화장실 문
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[4] == 1)//화장실 문 열쇠 보유 시
 				{
@@ -239,7 +268,7 @@ int livingroom()//거실
 					printf("딸깍하면서 문이 열렸다!\n");
 					_getch();
 					CLR;
-					bathroom();
+					bathroom();//화장실 함수 실행
 					break;
 				}
 				else
@@ -254,12 +283,14 @@ int livingroom()//거실
 			}
 			else if (livChoose == 5)//침실 문
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				int bedChoose;
 				printf("화려한 문 한가운데 '침실'이라는 팻말이 걸려있다.\n");
 				_getch();
 				printf("문 너머로 용의 드르렁대는 소리가 들린다.\n\n");
-				printf("1) 침실 문고리를 잡기  2) 거실로 돌아가기");
+				printf("1) 침실 문고리를 잡기  2) 거실로 돌아가기\n");
 				printf(">> ");
 				scanf_s("%d", &bedChoose);
 				if (bedChoose == 1)//침실 문고리를 잡기
@@ -279,7 +310,7 @@ int livingroom()//거실
 						printf("이미 문까지 열었는데, 역시 인생은 직진이지!");
 						_getch();
 						CLR;
-						gameover_bedroom();
+						gameover_bedroom();//배드엔딩(침실) 함수 실행
 					}
 					else if (bedChoose2 == 2)
 					{
@@ -303,8 +334,10 @@ int livingroom()//거실
 			}
 			else if (livChoose == 6)//부엌 서랍장
 			{
+				count += 1;
+				countCheck();
 				CLR;
-				if (item[5] == 1)
+				if (item[5] == 1)//상자 열쇠 보유 시
 				{
 					printf("서랍장에 여러 물건들이 뒤섞여 있다.");
 					_getch();
@@ -316,9 +349,9 @@ int livingroom()//거실
 					printf("서랍장에 여러 물건들이 가지런히 정리되어 있다. 필요한 물건은 없을까?\n\n");
 					_getch();
 					printf("뒤적대다 보니 '낙하산'이라 적힌 열쇠가 구석에 숨겨져 있었다.\n");
-					printf("... 잠깐, 낙하산?\n\n");
+					printf("... 잠깐, 낙하산?\n");
 					_getch();
-					printf("열쇠가 들어맞는 곳만 찾으면, 낙하산을 타고 안전하게 빠져나갈 수 있겠다!");
+					printf("열쇠가 들어맞는 곳만 찾으면, 낙하산을 타고 안전하게 빠져나갈 수 있겠다!\n\n");
 					_getch();
 					printf("'낙하산'이라 적힌 열쇠를 획득했다!");
 					_getch();
@@ -329,7 +362,9 @@ int livingroom()//거실
 			}
 			else if (livChoose == 7)//부엌 찬장
 			{
-				if (item[6] == 1)
+				count += 1;
+				countCheck();
+				if (item[6] == 1)//계량 스푼 보유 시
 				{
 					CLR;
 					printf("부엌 서랍장에 조리기구들이 엉망진창으로 놓여 있다.");
@@ -342,7 +377,7 @@ int livingroom()//거실
 					CLR;
 					printf("부엌 서랍장에 다양한 조리기구가 오와 열을 맞춰 정리되어 있다.\n");
 					_getch();
-					printf("계량 스푼이 눈에 보인다... 어딘가엔 쓰이지 않을까?");
+					printf("계량 스푼이 눈에 보인다... 어딘가엔 쓰이지 않을까?\n\n");
 					_getch();
 					printf("계량 스푼을 획득했다!");
 					_getch();
@@ -353,10 +388,12 @@ int livingroom()//거실
 			}
 			else if (livChoose == 8)//메모판
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				printf("부엌 메모판에 하루 일과, 이번 달 스케줄, 그리고 해야 할 일에 대한 메모가 잔뜩 정리되어 있다.\n");
 				_getch();
-				printf("우리 왕실 게시판은 마지막으로 쓴지 얼마나 됐지?... 어쨌든 오늘 일정에는 어떤 내용이 적혀 있을까?");
+				printf("우리 왕실 게시판은 마지막으로 쓴지 얼마나 됐지?... 어쨌든 오늘 일정에는 어떤 내용이 적혀 있을까?\n\n\n");
 				_getch();
 				CLR;
 				printf("----------------------------------------------------------------\n");
@@ -372,6 +409,8 @@ int livingroom()//거실
 			}
 			else if (livChoose == 9)//옥상 문
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[9] != 1)//보물 소지X
 				{
@@ -399,14 +438,15 @@ int livingroom()//거실
 				else if (item[9] == 1 && item[10] == 1 && item[11] == 1)//엔딩 조건 만족
 				{
 					CLR;
-					ending();
+					ending();//엔딩 함수 실행
 				}
 			}
 			else//선택지 이외의 숫자를 입력했을 경우
 			{
+				countCheck();
 				CLR;
 				break;
-				}
+			}
 		}
 	}
 }
@@ -416,7 +456,7 @@ int garret()//다락방
 	while (1)
 	{
 		int garChoose;
-		//다락방 아스키아트..? 있을 시 넣을 것
+		garretArt();
 		printf("누가 검은 용 아니랄까봐 다락방도 깔끔하게 정리되어 있다.\n");
 		printf("마음까지 편안해질 정도로 나란히 정리된 상자들, 다락방 창문으로 천천히 비치는 햇살...\n");
 		printf("... ... ...\n");
@@ -426,8 +466,10 @@ int garret()//다락방
 		scanf_s("%d", &garChoose);
 		while (1)
 		{
-			if (garChoose == 1)//보통크기의 상자
+			if (garChoose == 1)//보통 크기의 상자
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				printf("여기도 서류가 잔뜩 담겨 있다.\n");
 				_getch();
@@ -438,6 +480,8 @@ int garret()//다락방
 			}
 			else if (garChoose == 2)//작은 상자
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[4] == 1)//화장실 열쇠 보유 시
 				{
@@ -473,6 +517,8 @@ int garret()//다락방
 			}
 			else if (garChoose == 3)//큰 상자
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[11] == 1)//낙하산 보유 시
 				{
@@ -518,6 +564,8 @@ int garret()//다락방
 			}
 			else if (garChoose == 4)//보석함
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[3] == 1)//창고 열쇠 보유시
 				{
@@ -544,13 +592,16 @@ int garret()//다락방
 			}
 			else if (garChoose == 5)//거실로 돌아가기
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				printf("거실로 돌아가야겠다.");
 				_getch();
-				livingroom();
+				livingroom();//거실 함수 실행
 			}
 			else//선택지 이외의 숫자를 입력했을 경우
 			{
+				countCheck();
 				CLR;
 				break;
 			}
@@ -582,7 +633,7 @@ int storage()//창고
 	{
 		int storChoose;
 		int pw;//금고 비밀번호
-		//창고 아스키아트..? 있을 시 넣을 것
+		storageArt();
 		printf("창고하면 어두컴컴할 거라 생각했는데, 여기는 관리가 잘 되어서 그런지 분위기가 전혀 음침하지 않다.\n");
 		printf("설마 창고까지 인테리어를 신경쓴 걸까? 딴 사람이라면 모를까, 검은 용이라서 은근히 납득이 된다.\n\n");
 		printf("1) 공구함  2) 금고  3) 거실로 돌아가기\n");
@@ -592,6 +643,8 @@ int storage()//창고
 		{
 			if (storChoose == 1)//공구함
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[7] == 1)//스패너 보유 시
 				{
@@ -615,6 +668,8 @@ int storage()//창고
 			}
 			else if (storChoose == 2)//금고
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[9] == 1) //보물 획득 시
 				{
@@ -629,7 +684,7 @@ int storage()//창고
 					printf("비밀번호 6자리를 입력해야 하는 것 같은데...번호를 어떻게 찾지?\n\n");
 					printf("비밀번호 입력: ");
 					scanf_s("%d", &pw);
-					if (pw == 643128)
+					if (pw == 643128)//비밀번호를 맞췄을 시
 					{
 						CLR;
 						printf("헉, 정말로 이게 비밀번호였다니! 용 녀석도 은근 허술하네.\n");
@@ -654,6 +709,8 @@ int storage()//창고
 			}
 			else if (storChoose == 3)//거실로 돌아가기
 			{
+				count += 1;
+				countCheck();
 				if (item[7] == 1)//스패너 보유 시
 				{
 					CLR;
@@ -677,6 +734,7 @@ int storage()//창고
 			}
 			else//선택지 이외의 숫자를 입력했을 경우
 			{
+				countCheck();
 				CLR;
 				break;
 			}
@@ -699,7 +757,7 @@ int bathroom()//화장실
 	while (1)
 	{
 		int bathChoose;
-		//화장실 아스키아트..? 있을 시 넣을 것
+		bathroomArt();
 		printf("거울은 어제 새로 맞춘 것처럼 반짝이고, 바닥 타일 하나하나가 빛을 뿜고 있다...\n");
 		printf("우리 왕국 화장실에선 감히 상상도 할 수 없는 광경이다.\n");
 		printf("그리고 여기서라면 녹 제거제도 만들 수 있을 것 같다!\n\n");
@@ -710,6 +768,8 @@ int bathroom()//화장실
 		{
 			if (bathChoose == 1)//화장실 수납장
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[10] == 1)//옥상 열쇠 보유 시
 				{
@@ -739,6 +799,8 @@ int bathroom()//화장실
 			}
 			else if (bathChoose == 2)//녹 제거제 만들기
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				if (item[1] == 1 && item[6] != 1)//유리컵 有, 계량 스푼 無
 				{
@@ -783,6 +845,8 @@ int bathroom()//화장실
 			}
 			else if (bathChoose == 3)//거실로 나가기
 			{
+				count += 1;
+				countCheck();
 				CLR;
 				printf("거실로 돌아가야겠다.");
 				_getch();
@@ -791,6 +855,7 @@ int bathroom()//화장실
 			}
 			else//선택지 이외의 숫자를 입력했을 경우
 			{
+				countCheck();
 				CLR;
 				break;
 			}
@@ -798,25 +863,70 @@ int bathroom()//화장실
 	}
 }
 
-int gameover_bedroom()
+int gameover_bedroom()//배드 엔딩(침실)
 {
+	count = 0;
 	CLR;
 	_getch();
-	printf("꺄악.\n\n\n");
+	printf("왕자: 꺄악!!!!!!\n\n\n");
+	_getch();
+	printf("문을 열어젖히자 마자, 언제 자고있었냐는 듯 메시 뺨치는 반응속도로 침대에서 튀어나오는 검은 용!\n");
+	_getch();
+	printf("저항할 틈도 없이 붙잡힌 왕자는, 헬스복 입은 자의 수면 시간을 무시한 대가를 온 몸으로 치러야 했다.\n\n");
+	_getch();
+	printf("그 날, 용의 저택을 감시하는 왕국 관제탑에서 매끄러운 포물선 모양으로 날아가는 비실비실한 무언가를 관측했다나 뭐라나.\n\n\n");
 	_getch();
 	printf("GAME OVER\n\n");
-	printf("잠자는 용을 건들지 말자.");
+	printf("TIP! 잠자는 용은 건들지 말자...");
 	_getch();
 	CLR;
-	titleOpen();
+	main();//메인 화면으로 돌아가기
 }
 
-int ending()
+int ending()//엔딩
 {
+	count = 0;
 	CLR;
 	_getch();
-	printf("무사히 왕관 구출에 성공했다!");
+	printf("보물 탈환 작전 10분 스피드런을 성공한 왕자는, 낙하산을 타고 용의 저택에서 탈출해 왕국으로 돌아왔다.\n\n");
+	_getch();
+	printf("왕자의 판단력과 운 중 어느 쪽이 더 좋았던 건지는 잘 모르겠지만,\n");
+	_getch();
+	printf("역시 늦잠을 자고서 용의 저택에 들어가도 정신만 잘 차린다면 살아남을 수 있는 법이다.\n");
+	_getch();
+	printf("그러니깐 너도, 그래 너 말야 너, 무턱대고 사는 인생인 것 같아도 너무 걱정하지 말라고.");
 	_getch();
 	CLR;
-	titleOpen();
-} 
+	printf("아, 그래서 결혼식은 어떻게 됐냐고? 공주님이 나 같은 왕자는 필요없다고 취소하잰다.\n");
+	_getch();
+	printf("이게 인생이지...\n\n\n");
+	_getch();
+	printf("THE END");
+	_getch();
+	CLR;
+	main();//메인 화면으로 돌아가기
+}
+
+int gameover_time()//지정 횟수 60번을 넘기게 되었을 때의 시간 초과 엔딩
+{
+	count = 0;
+	CLR;
+	printf("따르르르릉!\n\n");
+	_getch();
+	printf("어느새 알람소리가 용의 저택을 가득 메우기 시작했다.\n");
+	_getch();
+	printf("지금이라도 도망치면 용한테 얻어맞는 일만큼은 면할 수 있지 않을까?...\n그런데 어떻게 빠져나가지?");
+	_getch();
+	CLR;
+	printf("... ...\n");
+	_getch();
+	printf("잠시 뒤, 왕자는 굳이 복잡한 고민을 할 필요가 없다는 사실을 깨달았다. 곧 용이 나타나 왕자를 붙잡아 버렸기 때문에...\n\n");
+	_getch();
+	printf("그래서 어떻게 됐냐고? 굳이 그런 눈물겨운 이야기를 듣고 싶다면 말리진 않겠다만...\n\n\n");
+	_getch();
+	printf("GAME OVER\n\n");
+	printf("TIP! 더 빨리 보물을 찾고 탈출해보자.");
+	_getch();
+	CLR;
+	main();//메인 화면으로 돌아가기
+}

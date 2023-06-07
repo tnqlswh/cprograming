@@ -1,5 +1,14 @@
 #include "main.h"
 
+int cellar();
+int livingroom();
+int garret();
+int storage();
+int bathroom();
+int gameover_bedroom();
+int ending();
+int gameover_time();
+
 int item[12] = { 0 }; 
 /*아이템 습득 확인용 배열
 * 
@@ -15,4 +24,4 @@ int item[12] = { 0 };
 9 = 보물
 10 = 옥상열쇠
 11 = 낙하산
-*/ 
+*/
